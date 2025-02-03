@@ -1,0 +1,1 @@
+.grid:where(.astro-AH3NOHVX){display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:100px}@media (max-width: 800px){.grid:where(.astro-AH3NOHVX){grid-template-columns:1fr;justify-items:center}}
