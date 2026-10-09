@@ -1,0 +1,219 @@
+export interface Runner {
+  place: number;
+  bib?: number;
+  surname: string;
+  name: string;
+  nationality?: string;
+  born?: number;
+  club?: string;
+  splits: (string | undefined)[];
+  time: string;
+}
+
+export interface Race {
+  title: string;
+  splitLabels: string[];
+  women: Runner[];
+  men: Runner[];
+}
+
+const r = (
+  place: number,
+  bib: number | undefined,
+  surname: string,
+  name: string,
+  nationality: string | undefined,
+  born: number | undefined,
+  club: string | undefined,
+  splits: (string | undefined)[],
+  time: string
+): Runner => ({ place, bib, surname, name, nationality, born, club, splits, time });
+
+export const event = {
+  title: "Results of the 16th Jazerný marathon Košice",
+  date: "Sunday, 16 August 2026",
+  weather: "Very hot, 35 °C",
+  referee: "Peter Buc",
+  processedBy: "Anna Bucová",
+};
+
+export const races: Race[] = [
+  {
+    title: "5 km",
+    splitLabels: [],
+    women: [
+      r(1, 79, "KYSELOVÁ", "Michaela", "SVK", 2012, "Triatlonový klub Košice", [], "0:28:47"),
+      r(2, 20, "REPASKÁ", "Eva", "SVK", 1980, "Košice", [], "0:28:57"),
+      r(3, 88, "NARJASOVÁ", "Danka", "SVK", 1965, "Spartak Medzev", [], "0:30:02"),
+      r(4, 64, "SOMOŠIOVÁ", "Zuuana", "SVK", 1991, "Košice", [], "0:30:06"),
+      r(5, 144, "BÍLA", "Erika", "SVK", 1963, "BK Steel Košice", [], "0:31:04"),
+      r(6, 98, "MUNKÁCSIOVÁ", "Kvetoslava", "SVK", 1970, "Košice", [], "0:33:05"),
+      r(7, 37, "FORRAIOVÁ", "Lenka", "SVK", 1995, "Košice", [], "0:34:35"),
+      r(8, 76, "SOKOLOVÁ", "Helena", "SVK", 1957, "Nordic Walking Mladosť", [], "0:34:47"),
+      r(9, 18, "NEY", "Ingrid", "SVK", 1969, "Maratónsky klub Košice", [], "0:35:34"),
+      r(10, 39, "JEMELKOVÁ", "Šárka", "SVK", 2013, "Košice", [], "0:38:19"),
+    ],
+    men: [
+      r(1, 49, "KUCKO", "Juraj", "SVK", 1995, "Košice", [], "0:22:22"),
+      r(2, 71, "RUNČÁK", "Peter", "SVK", 1971, "Košice", [], "0:27:43"),
+      r(3, 33, "GURECKA", "Jozef", "SVK", 1961, "Tatranky Reľov", [], "0:28:14"),
+      r(4, 142, "TULÁK", "Peter", "SVK", 1958, "Active life team Košice", [], "0:30:07"),
+      r(5, 87, "STANČÁK", "Marián", "SVK", 1957, "BK Spartak Medzev", [], "0:31:04"),
+      r(6, 99, "KLEC", "Pavol", "SVK", 1975, "Košice", [], "0:32:02"),
+      r(7, 143, "WENCEL", "Richard", "SVK", 2015, "Košice", [], "0:33:51"),
+      r(8, 81, "IVANECKÝ", "Adamko", "SVK", 2012, "Active life team", [], "0:37:08"),
+      r(9, 2, "GOMBITA", "Peter", "SVK", 1956, "Beh za chudobných", [], "0:37:39"),
+      r(10, 141, "SELIGA", "Samuel", "SVK", 1986, "Košice", [], "0:43:54"),
+      r(11, 80, "KASSAY", "Vojtech", "SVK", 1946, "MARAS team", [], "1:10:22"),
+      r(12, 96, "THEISZ", "Ján", "SVK", 1954, "KLIMAVEX KOŠICE", [], "1:10:22"),
+    ],
+  },
+  {
+    title: "10 km",
+    splitLabels: ["5 km"],
+    women: [
+      r(1, 127, "KOŠČOVÁ", "Melánia", "SVK", 2011, "Active life team Košice", ["0:22:36"], "0:56:33"),
+      r(2, 32, "FORRAIOVÁ", "Veronika", "SVK", 1998, "Košice", ["0:27:54"], "0:56:58"),
+      r(3, 138, "SEMANOVÁ", "Zlatica", "SVK", 1958, "Košice", ["0:31:42"], "1:03:30"),
+      r(4, 91, "VARGOVÁ", "Lucia", "SVK", 1979, "Ruskov", ["0:31:19"], "1:03:41"),
+    ],
+    men: [
+      r(1, 92, "ONOFREJ", "Erik", "SVK", 1981, "Košice", ["0:19:11"], "0:39:49"),
+      r(2, 45, "NOVOTA", "Alexander", "SVK", 1980, "Intocast Košice", ["0:23:47"], "0:49:12"),
+      r(3, 29, "LUKÁČ", "Karol", "SVK", 1962, "Maratónsky klub Košice", ["0:26:04"], "0:54:57"),
+      r(4, 140, "KURUC", "Juraj ml.", "SVK", 1984, "Košice", ["0:30:23"], "0:58:40"),
+      r(5, 23, "OROS", "Martin", "SVK", 2004, "Košice", ["0:28:40"], "0:59:33"),
+      r(6, 139, "KURUC", "Juraj st.", "SVK", 1959, "Košice", ["0:30:56"], "1:01:04"),
+      r(7, 77, "MESÁROŠ", "Ján", "SVK", 1974, "Active life team Košice", ["0:31:25"], "1:04:34"),
+      r(8, 85, "GARČÁR", "Ján", "SVK", 1952, "BK Steel Košice", ["0:31:19"], "1:04:52"),
+      r(9, 59, "VARGOVČÁK", "Marek", "SVK", 1975, "Košice", ["0:32:03"], "1:05:12"),
+      r(10, 78, "SVIATKO", "Stanislav", "SVK", 1962, "Košice", ["0:32:35"], "1:06:58"),
+      r(11, 137, "POLÁK", "Peter", "SVK", 1948, "Active life team Košice", ["0:37:39"], "1:15:21"),
+      r(12, 15, "MARAS", "Ladislav", "SVK", 1963, "MARAS team", ["0:43:23"], "1:26:43"),
+    ],
+  },
+  {
+    title: "15 km",
+    splitLabels: ["5 km", "10 km"],
+    women: [
+      r(1, 54, "KOVÁCSOVÁ", "Andrea", "SVK", 1974, "Kráľovský Chlmec", ["0:26:54", "0:54:27"], "1:22:31"),
+      r(2, 126, "KOŠČOVÁ", "Natália", "SVK", 1992, "MX Building Košice", ["0:27:55", "0:56:33"], "1:24:26"),
+      r(3, 1, "ŠMAJDOVÁ", "Martina", "SVK", 1979, "Košice", ["0:31:19", "0:59:14"], "1:27:13"),
+      r(4, 58, "VARGOVČÁKOVÁ", "Andrea", "SVK", 1977, "Košice", ["0:28:53", "0:59:14"], "1:34:35"),
+      r(5, 12, "DROPPOVÁ", "Marcela", "SVK", 1978, "Beh za chudobných", ["0:31:19", "1:02:54"], "1:36:38"),
+      r(6, 122, "ZUŠTINOVÁ", "Janka", "SVK", 1975, "Individuálny člen SAZ Košice", ["0:35:54", "1:15:35"], "1:59:16"),
+    ],
+    men: [
+      r(1, 94, "KOLLÁR", "Ján", "SVK", 1986, "Bratislava 2", ["0:25:39", "0:51:30"], "1:17:42"),
+      r(2, 42, "NOVOTA", "Miroslav", "SVK", 1978, "Intocast Košice", ["0:23:05", "0:49:02"], "1:18:07"),
+      r(3, 120, "BARTKO", "Martin", "SVK", 1976, "Košice-Vyšné Opátske", ["0:26:06", "0:52:15"], "1:18:26"),
+      r(4, 132, "ŠVEC", "Štefan", "SVK", 1949, "Košice", ["0:25:35", "0:52:11"], "1:18:31"),
+      r(5, 84, "ČIGÁŠ", "Ján", "SVK", 1952, "Košice-Nad jazerom", ["0:26:30", "0:52:48"], "1:19:38"),
+      r(6, 89, "TROCHA", "Rastislav", "SVK", 1971, "Košice", ["0:30:57", "0:57:46"], "1:25:18"),
+      r(7, 53, "DEČO", "Michal", "SVK", 1986, "Sura Team Košice", ["0:29:03", "0:57:18"], "1:25:50"),
+      r(8, 116, "TARHANIČ", "Tomaš", "SVK", 1988, "DoubleThree Hilton Košice Run", ["0:33:21", "1:05:00"], "1:34:51"),
+      r(9, 134, "TARHANIČ", "Marej", "SVK", 1977, "Košice", ["0:33:21", "1:05:00"], "1:37:21"),
+      r(10, 90, "VARGA", "Peter", "SVK", 1973, "Stoličky Alžbetina Košice", ["0:31:19", "1:03:41"], "1:38:24"),
+      r(11, 16, "PRIBIČKO", "Peter", "SVK", 1947, "ŽSR Košice", ["0:33:40", "1:08:35"], "1:44:40"),
+    ],
+  },
+  {
+    title: "20 km",
+    splitLabels: ["5 km", "10 km", "15 km"],
+    women: [],
+    men: [
+      r(1, 8, "RYBÁR", "Marián", "SVK", 1971, "BK Spartak Medzev", ["0:27:55", "0:56:17", "1:24:55"], "1:54:10"),
+    ],
+  },
+  {
+    title: "Half marathon",
+    splitLabels: ["5 km", "10 km", "15 km", "20 km"],
+    women: [
+      r(1, 121, "HAMRÁK SEPEŠI", "Aldona", "SVK", 1987, "Košice", ["0:26:53", "0:54:33", "1:23:02", "1:53:11"], "1:59:16"),
+      r(2, 68, "FOTTOVÁ", "Jana", "SVK", 1964, "Prešov", ["0:30:32", "1:01:49", "1:30:02", "2:05:59"], "2:12:55"),
+      r(3, 257, "MACEJAKOVÁ", "Soňa", "SVK", 1956, "Priatelia behu ležérneho", ["0:37:18", "1:15:54", "1:59:58", "2:45:38"], "2:55:23"),
+    ],
+    men: [
+      r(1, 135, "REPÁK", "Erik", "SVK", 1991, "BKO Vyšná Myšľa", ["0:21:22", "0:42:50", "1:04:03", "1:25:24"], "1:29:58"),
+      r(2, 97, "MIŠLEJ", "Ján", "SVK", 1965, "Active life team Košice", ["0:22:45", "0:45:20", "1:07:49", "1:30:17"], "1:35:18"),
+      r(3, 129, "HORNÝ", "Vlastimil", "SVK", 1971, "Tatranská Lomnica", ["0:23:55", "0:46:56", "1:10:10", "1:33:20"], "1:38:06"),
+      r(4, 35, "VILK", "Radovan", "SVK", 1985, "Košice", ["0:24:18", "0:49:02", "1:13:43", "1:37:21"], "1:41:51"),
+      r(5, 48, "KLEMA", "Igor", "SVK", 1986, "Maratonsky klub Kosice", ["0:24:18", "0:49:02", "1:13:43", "1:37:21"], "1:42:03"),
+      r(6, 65, "DEMJANOVIČ", "Vladimoí", "SVK", 1974, "Donovalský pivovar", ["0:23:09", "0:48:30", "1:15:42", "1:42:49"], "1:48:33"),
+      r(7, 136, "JAROŠ", "Pavol", "SVK", 1991, "Košice", ["0:25:20", "0:50:36", "1:16:40", "1:44:13"], "1:50:14"),
+      r(8, 41, "VAĽA", "Vladimír", "SVK", 1970, "Košice", ["0:26:46", "0:52:33", "1:18:35", "1:45:33"], "1:51:08"),
+      r(9, 93, "SABOLČÍK", "Mirosalav", "SVK", 1974, "Košice", ["0:26:05", "0:52:15", "1:18:41", "1:45:55"], "1:51:47"),
+      r(10, 11, "CAPKO", "Miloslav", "SVK", 1978, "Ploské", ["0:25:43", "0:52:28", "1:20:20", "1:50:18"], "1:56:46"),
+      r(11, 10, "DAŇKO", "Jozef", "SVK", 1979, "BK ZasRun Šarišské Bohdanovce", ["0:27:33", "0:55:15", "1:23:10", "1:52:12"], "1:58:28"),
+      r(12, 119, "TUŽINČIN", "Ján", "SVK", 1974, "Košice", ["0:27:55", "0:55:44", "1:23:05", "1:52:28"], "1:58:44"),
+      r(13, 47, "ZACHAR", "Pavol", "SVK", 1982, "Running in my shoes", ["0:27:52", "0:56:01", "1:25:13", "1:54:22"], "2:00:54"),
+      r(14, 73, "PETREK", "Jaroslav", "SVK", 1973, "Košice", ["0:27:53", "0:56:01", "1:25:14", "1:54:24"], "2:00:54"),
+      r(15, 52, "DEČO", "Richard", "SVK", 1988, "Sura Team Košice", ["0:29:03", "0:57:18", "1:25:47", "1:54:26"], "2:01:04"),
+      r(16, 133, "MIRDA", "Martin", "SVK", 1971, "05 BK Furča Košice", ["0:27:55", "0:55:44", "1:23:56", "1:55:34"], "2:03:07"),
+      r(17, 36, "ŠOLTÝS", "Milan", "SVK", 1972, "Batizovce", ["0:28:37", "0:57:59", "1:28:18", "2:02:08"], "2:12:10"),
+      r(18, 72, "FAZEKAŠ", "Rastislav", "SVK", 1994, "Košice", ["0:30:58", "1:02:37", "1:34:57", "2:09:36"], "2:17:14"),
+      r(19, 86, "PINČÁK", "Boris", "SVK", 2012, "Active life team Košice", ["0:30:08", "1:02:26", "1:45:38", "2:37:25"], "2:47:31"),
+      r(20, 14, "TOMEČKO", "Jozef", "SVK", 1953, "MARAS team", ["0:49:07", "1:39:14", "2:28:28", "3:18:29"], "3:29:19"),
+    ],
+  },
+  {
+    title: "25 km",
+    splitLabels: ["5 km", "10 km", "15 km", "20 km"],
+    women: [
+      r(1, 130, "HUDÁKOVÁ", "Ivana", "SVK", 1990, "Košice - Šaca", ["0:29:20", "0:57:54", "1:26:34", "1:55:11"], "2:25:28"),
+      r(2, 117, "TÓTHOVÁ", "Erika", "SVK", 1981, "Košice", ["0:31:25", "1:02:48", "1:35:02", "2:08:22"], "2:40:58"),
+    ],
+    men: [
+      r(1, 107, "MANDÚCH", "Ján", "SVK", 1977, "MTC Vyšná Šebastová", ["0:26:02", "0:52:20", "1:18:57", "1:45:17"], "2:13:21"),
+      r(2, 31, "GREGA", "Jozef", "SVK", 1969, "Luki team Košice", ["0:27:26", "0:54:49", "1:23:08", "1:53:05"], "2:23:46"),
+      r(3, 131, "ZELINKA", "Ladislav", "SVK", 1994, "Košice - Šaca", ["0:29:20", "0:57:54", "1:26:35", "1:55:15"], "2:25:32"),
+      r(4, 38, "BILY", "Michal", "SVK", 1990, "Košice", ["0:33:25", "1:05:05", "1:35:24", "2:04:15"], "2:36:49"),
+      r(5, 67, "FOTTA", "Rastislav", "SVK", 1964, "Prešov", ["0:30:32", "1:01:33", "1:33:22", "2:06:44"], "2:44:32"),
+      r(6, 100, "ZUBERNÍK", "Štefan", "SVK", 1948, "Pomôžte chudobným OÁZA", ["0:29:26", "1:00:37", "1:34:39", "2:12:35"], "2:51:15"),
+      r(7, 105, "KONIAR", "Jozef", "SVK", 1963, "Dôchodca Košice", ["0:30:56", "1:02:32", "1:35:07", "2:09:33"], "2:52:54"),
+      r(7, 106, "KERI", "Pavol", "SVK", 1976, "Liptovský Mikuláš", ["0:30:56", "1:02:32", "1:35:07", "2:09:33"], "2:52:54"),
+    ],
+  },
+  {
+    title: "30 km",
+    splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km"],
+    women: [
+      r(1, 124, "VARGAEŠTOK", "Gabriela", "SVK", 1978, "Active life team Košice", ["0:25:10", "0:50:33", "1:15:42", "1:40:56", "2:06:23"], "2:31:36"),
+      r(2, 123, "ĎURIŠOVÁ", "Miroslava", "SVK", 1985, "Active life team Košice", ["0:27:55", "0:56:17", "1:25:00", "1:54:28", "2:23:01"], "2:55:13"),
+    ],
+    men: [
+      r(1, 62, "PÁLFI", "Dávid", "SVK", 1997, "Active life team Košice", ["0:22:36", "0:45:05", "1:07:32", "1:30:17", "1:52:28"], "2:14:50"),
+      r(2, 128, "PÁLFI", "Štefan", "SVK", 1982, "Active life team Košice", ["0:22:38", "0:45:05", "1:07:32", "1:30:02", "1:52:28"], "2:14:50"),
+      r(3, 19, "REPASKÝ", "Gabriel", "SVK", 1985, "Košice Krásna", ["0:22:38", "0:45:17", "1:07:49", "1:30:17", "1:52:46"], "2:16:30"),
+      r(4, 82, "SABOL", "Slavomir", "SVK", 1977, "Zahrada pohybu Lemešany", ["0:22:36", "0:45:05", "1:07:38", "1:31:58", "1:56:56"], "2:22:30"),
+      r(5, 125, "TAKÁČ", "Stanislav", "SVK", 1984, "HSŽ Oáza Košice", ["0:24:26", "0:48:44", "1:13:15", "1:38:06", "2:03:19"], "2:29:33"),
+      r(6, 95, "KRAČUN", "Pavel", "SVK", 1973, "ŠK Nižná Myšľa", ["0:22:38", "0:45:17", "1:07:49", "1:30:43", "1:58:32"], "2:31:36"),
+      r(7, 83, "GROMOS", "Anton", "SVK", 1967, "Zahrada pohybu Prešov", ["0:24:32", "0:49:13", "1:14:25", "1:40:41", "2:07:44"], "2:36:20"),
+      r(8, 118, "DEMKO", "Štefan", "SVK", 1988, "TJ Metropol Košice", ["0:27:55", "0:56:17", "1:24:56", "1:54:14", "2:22:51"], "2:55:13"),
+    ],
+  },
+  {
+    title: "35 km",
+    splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km", "30 km"],
+    women: [
+      r(1, 61, "KOPČÁKOVÁ SELIGOVÁ", "Beáta", "SVK", 1980, "Metropol Košice", ["0:28:37", "0:57:59", "1:28:21", "2:00:10", "2:35:42", "3:15:20"], "3:57:29"),
+    ],
+    men: [],
+  },
+  {
+    title: "Marathon (42 195 m)",
+    splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km", "30 km", "35 km", "40 km"],
+    women: [
+      r(1, 101, "BUTORACOVÁ", "Ivana", "SVK", 1980, "MTC Vyšná Šebastová", ["0:26:02", "0:52:20", "1:18:20", "1:43:37", "2:09:44", "2:35:57", "3:02:46", "3:31:17"], "3:43:14"),
+    ],
+    men: [
+      // Missing from the official PDF; added afterwards.
+      r(1, undefined, "BARNA", "Michal", undefined, undefined, undefined, [], "2:54:00"),
+      r(2, 103, "HUDÁK", "Rastislav", "SVK", 1973, "Hu Ra Košice", ["0:22:23", "0:44:59", "1:07:21", "1:30:43", "1:55:40", "2:21:06", "2:47:12", "3:13:06"], "3:24:48"),
+      r(3, 102, "BOGÁR", "Janoš", "HUN", 1964, "DVTK Maďarsko", ["0:25:19", "0:50:48", "1:17:12", "1:45:57", "2:15:39", "2:47:08", "3:22:48", "3:55:45"], "4:09:18"),
+      r(4, 104, "FILČÁK", "Matej", "SVK", 1979, "1. Atletický klub Humenné", ["0:27:33", "0:55:16", "1:23:12", "1:52:59", "2:28:55", "3:08:02", "3:49:52", "4:35:49"], "4:54:00"),
+      r(5, 108, "ARAPALEA", "Catalin", "ROM", 1999, "APDDacia", ["0:30:56", "1:00:32", "1:31:47", "2:08:19", "2:48:27", "3:30:13", "4:12:31", "4:46:58"], "4:58:44"),
+      r(6, 13, "TARCI 13", "Vlado", "CZE", 1962, "československý občan z VEĽKÝCH R", ["0:32:56", "1:12:12", "1:55:57", "2:45:57", "3:37:00", "4:29:23", "5:22:26", "6:13:00"], "6:35:25"),
+    ],
+  },
+];
