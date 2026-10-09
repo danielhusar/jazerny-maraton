@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pdfs": "node --experimental-strip-types --no-warnings scripts/build-results-pdfs.ts"
   },
   "dependencies": {
     "astro": "^1.1.5"

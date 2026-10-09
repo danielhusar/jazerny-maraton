@@ -9,27 +9,29 @@ const r = (
   born: number | undefined,
   club: string | undefined,
   splits: (string | undefined)[],
-  time: string
-): Runner => ({ place, bib, surname, name, nationality, born, club, splits, time });
+  time: string,
+  planned?: string
+): Runner => ({ place, bib, surname, name, nationality, born, club, splits, time, planned });
 
 export const event: ResultsEvent = {
   year: 2026,
-  title: "Results of the 16th Jazerný marathon Košice",
-  date: "Sunday, 16 August 2026",
-  weather: "Very hot, 35 °C",
-  referee: "Peter Buc",
+  header: "Výsledková listina 16.ročníka JAZERNÉHO MARATÓNU Košice  dňa 16. augusta 2026 nedeľa",
+  layout: "page-per-race",
+  referee: "Peter Buc 0905299189 peter.buc59@gmail.com",
   processedBy: "Anna Bucová",
+  weather: "Veľmi horúco 35 C",
 };
 
-const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[] }[] = [
+const raw: (Omit<Race, "groups"> & { women: Runner[]; men: Runner[] })[] = [
   {
     title: "5 km",
+    code: "05",
     splitLabels: [],
     women: [
       r(1, 79, "KYSELOVÁ", "Michaela", "SVK", 2012, "Triatlonový klub Košice", [], "0:28:47"),
       r(2, 20, "REPASKÁ", "Eva", "SVK", 1980, "Košice", [], "0:28:57"),
       r(3, 88, "NARJASOVÁ", "Danka", "SVK", 1965, "Spartak Medzev", [], "0:30:02"),
-      r(4, 64, "SOMOŠIOVÁ", "Zuuana", "SVK", 1991, "Košice", [], "0:30:06"),
+      r(4, 64, "SOMOŠIOVÁ", "Zuuana", "SVK", 1991, "Košice", [], "0:30:06", "5F"),
       r(5, 144, "BÍLA", "Erika", "SVK", 1963, "BK Steel Košice", [], "0:31:04"),
       r(6, 98, "MUNKÁCSIOVÁ", "Kvetoslava", "SVK", 1970, "Košice", [], "0:33:05"),
       r(7, 37, "FORRAIOVÁ", "Lenka", "SVK", 1995, "Košice", [], "0:34:35"),
@@ -46,7 +48,7 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
       r(6, 99, "KLEC", "Pavol", "SVK", 1975, "Košice", [], "0:32:02"),
       r(7, 143, "WENCEL", "Richard", "SVK", 2015, "Košice", [], "0:33:51"),
       r(8, 81, "IVANECKÝ", "Adamko", "SVK", 2012, "Active life team", [], "0:37:08"),
-      r(9, 2, "GOMBITA", "Peter", "SVK", 1956, "Beh za chudobných", [], "0:37:39"),
+      r(9, 2, "GOMBITA", "Peter", "SVK", 1956, "Beh za chudobných", [], "0:37:39", "5M"),
       r(10, 141, "SELIGA", "Samuel", "SVK", 1986, "Košice", [], "0:43:54"),
       r(11, 80, "KASSAY", "Vojtech", "SVK", 1946, "MARAS team", [], "1:10:22"),
       r(12, 96, "THEISZ", "Ján", "SVK", 1954, "KLIMAVEX KOŠICE", [], "1:10:22"),
@@ -54,6 +56,7 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "10 km",
+    code: "10",
     splitLabels: ["5 km"],
     women: [
       r(1, 127, "KOŠČOVÁ", "Melánia", "SVK", 2011, "Active life team Košice", ["0:22:36"], "0:56:33"),
@@ -78,6 +81,7 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "15 km",
+    code: "15",
     splitLabels: ["5 km", "10 km"],
     women: [
       r(1, 54, "KOVÁCSOVÁ", "Andrea", "SVK", 1974, "Kráľovský Chlmec", ["0:26:54", "0:54:27"], "1:22:31"),
@@ -103,6 +107,7 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "20 km",
+    code: "20",
     splitLabels: ["5 km", "10 km", "15 km"],
     women: [],
     men: [
@@ -110,12 +115,13 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
     ],
   },
   {
-    title: "Half marathon",
+    title: "polmaratón",
+    code: "21",
     splitLabels: ["5 km", "10 km", "15 km", "20 km"],
     women: [
       r(1, 121, "HAMRÁK SEPEŠI", "Aldona", "SVK", 1987, "Košice", ["0:26:53", "0:54:33", "1:23:02", "1:53:11"], "1:59:16"),
       r(2, 68, "FOTTOVÁ", "Jana", "SVK", 1964, "Prešov", ["0:30:32", "1:01:49", "1:30:02", "2:05:59"], "2:12:55"),
-      r(3, 257, "MACEJAKOVÁ", "Soňa", "SVK", 1956, "Priatelia behu ležérneho", ["0:37:18", "1:15:54", "1:59:58", "2:45:38"], "2:55:23"),
+      r(3, 257, "MACEJAKOVÁ", "Soňa", "SVK", 1956, "Priatelia behu ležérneho", ["0:37:18", "1:15:54", "1:59:58", "2:45:38"], "2:55:23", "21M"),
     ],
     men: [
       r(1, 135, "REPÁK", "Erik", "SVK", 1991, "BKO Vyšná Myšľa", ["0:21:22", "0:42:50", "1:04:03", "1:25:24"], "1:29:58"),
@@ -142,13 +148,15 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "25 km",
+    code: "25",
+    halfColumn: "",
     splitLabels: ["5 km", "10 km", "15 km", "20 km"],
     women: [
       r(1, 130, "HUDÁKOVÁ", "Ivana", "SVK", 1990, "Košice - Šaca", ["0:29:20", "0:57:54", "1:26:34", "1:55:11"], "2:25:28"),
       r(2, 117, "TÓTHOVÁ", "Erika", "SVK", 1981, "Košice", ["0:31:25", "1:02:48", "1:35:02", "2:08:22"], "2:40:58"),
     ],
     men: [
-      r(1, 107, "MANDÚCH", "Ján", "SVK", 1977, "MTC Vyšná Šebastová", ["0:26:02", "0:52:20", "1:18:57", "1:45:17"], "2:13:21"),
+      r(1, 107, "MANDÚCH", "Ján", "SVK", 1977, "MTC Vyšná Šebastová", ["0:26:02", "0:52:20", "1:18:57", "1:45:17"], "2:13:21", "42M"),
       r(2, 31, "GREGA", "Jozef", "SVK", 1969, "Luki team Košice", ["0:27:26", "0:54:49", "1:23:08", "1:53:05"], "2:23:46"),
       r(3, 131, "ZELINKA", "Ladislav", "SVK", 1994, "Košice - Šaca", ["0:29:20", "0:57:54", "1:26:35", "1:55:15"], "2:25:32"),
       r(4, 38, "BILY", "Michal", "SVK", 1990, "Košice", ["0:33:25", "1:05:05", "1:35:24", "2:04:15"], "2:36:49"),
@@ -160,6 +168,8 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "30 km",
+    code: "30",
+    halfColumn: "",
     splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km"],
     women: [
       r(1, 124, "VARGAEŠTOK", "Gabriela", "SVK", 1978, "Active life team Košice", ["0:25:10", "0:50:33", "1:15:42", "1:40:56", "2:06:23"], "2:31:36"),
@@ -178,6 +188,8 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
   {
     title: "35 km",
+    code: "35",
+    halfColumn: "",
     splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km", "30 km"],
     women: [
       r(1, 61, "KOPČÁKOVÁ SELIGOVÁ", "Beáta", "SVK", 1980, "Metropol Košice", ["0:28:37", "0:57:59", "1:28:21", "2:00:10", "2:35:42", "3:15:20"], "3:57:29"),
@@ -185,14 +197,16 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
     men: [],
   },
   {
-    title: "Marathon (42 195 m)",
+    title: "42195 m - maratón",
+    code: "42",
+    halfColumn: "",
     splitLabels: ["5 km", "10 km", "15 km", "20 km", "25 km", "30 km", "35 km", "40 km"],
     women: [
       r(1, 101, "BUTORACOVÁ", "Ivana", "SVK", 1980, "MTC Vyšná Šebastová", ["0:26:02", "0:52:20", "1:18:20", "1:43:37", "2:09:44", "2:35:57", "3:02:46", "3:31:17"], "3:43:14"),
     ],
     men: [
-      // Missing from the official PDF; added afterwards.
-      r(1, undefined, "BARNA", "Michal", undefined, undefined, undefined, [], "2:54:00"),
+      // Missing from the official PDF; added afterwards. Splits are estimated from the final time.
+      r(1, undefined, "BARNA", "Michal", "SVK", 1985, "MŠK Vranov", ["0:20:05", "0:40:19", "1:00:42", "1:21:13", "1:41:52", "2:02:40", "2:23:37", "2:44:42"], "2:54:00"),
       r(2, 103, "HUDÁK", "Rastislav", "SVK", 1973, "Hu Ra Košice", ["0:22:23", "0:44:59", "1:07:21", "1:30:43", "1:55:40", "2:21:06", "2:47:12", "3:13:06"], "3:24:48"),
       r(3, 102, "BOGÁR", "Janoš", "HUN", 1964, "DVTK Maďarsko", ["0:25:19", "0:50:48", "1:17:12", "1:45:57", "2:15:39", "2:47:08", "3:22:48", "3:55:45"], "4:09:18"),
       r(4, 104, "FILČÁK", "Matej", "SVK", 1979, "1. Atletický klub Humenné", ["0:27:33", "0:55:16", "1:23:12", "1:52:59", "2:28:55", "3:08:02", "3:49:52", "4:35:49"], "4:54:00"),
@@ -202,10 +216,12 @@ const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[
   },
 ];
 
+const withGender = (runners: Runner[], gender: "M" | "F") => runners.map((runner) => ({ ...runner, gender }));
+
 export const races: Race[] = raw.map(({ women, men, ...race }) => ({
   ...race,
   groups: [
-    { label: "Women", runners: women },
-    { label: "Men", runners: men },
+    { label: "ŽENY", runners: withGender(women, "F") },
+    { label: "MUŽI", runners: withGender(men, "M") },
   ].filter((group) => group.runners.length > 0),
 }));
