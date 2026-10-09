@@ -1,21 +1,4 @@
-export interface Runner {
-  place: number;
-  bib?: number;
-  surname: string;
-  name: string;
-  nationality?: string;
-  born?: number;
-  club?: string;
-  splits: (string | undefined)[];
-  time: string;
-}
-
-export interface Race {
-  title: string;
-  splitLabels: string[];
-  women: Runner[];
-  men: Runner[];
-}
+import type { Race, ResultsEvent, Runner } from "./results";
 
 const r = (
   place: number,
@@ -29,7 +12,8 @@ const r = (
   time: string
 ): Runner => ({ place, bib, surname, name, nationality, born, club, splits, time });
 
-export const event = {
+export const event: ResultsEvent = {
+  year: 2026,
   title: "Results of the 16th Jazerný marathon Košice",
   date: "Sunday, 16 August 2026",
   weather: "Very hot, 35 °C",
@@ -37,7 +21,7 @@ export const event = {
   processedBy: "Anna Bucová",
 };
 
-export const races: Race[] = [
+const raw: { title: string; splitLabels: string[]; women: Runner[]; men: Runner[] }[] = [
   {
     title: "5 km",
     splitLabels: [],
@@ -217,3 +201,11 @@ export const races: Race[] = [
     ],
   },
 ];
+
+export const races: Race[] = raw.map(({ women, men, ...race }) => ({
+  ...race,
+  groups: [
+    { label: "Women", runners: women },
+    { label: "Men", runners: men },
+  ].filter((group) => group.runners.length > 0),
+}));
